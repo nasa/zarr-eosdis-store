@@ -8,7 +8,7 @@ from requests_futures.sessions import FuturesSession
 def _build_session():
     session = FuturesSession()
     cache_adapter = CacheControlAdapter()
-    cache_adapter.controller = CacheController(cache=cache_adapter.cache, status_codes=(200, 203, 300, 301, 307))
+    cache_adapter.controller = CacheController(cache=cache_adapter.cache, status_codes=(200, 203, 300, 301, 303, 307))
     session.mount('http://', cache_adapter)
     session.mount('https://', cache_adapter)
     return session, cache_adapter
