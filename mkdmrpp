@@ -1,0 +1,20 @@
+#!/bin/bash
+
+set -ex
+
+resolve_dir() {
+        (builtin cd `dirname "${1/#~/$HOME}"`'/'`basename "${1/#~/$HOME}"` 2>/dev/null; if [ $? -eq 0 ]; then pwd; fi)
+}
+
+for var in "$@"; do
+  filename=$(basename $var)
+  dir=$(resolve_dir `dirname $var`)
+  ext=h5
+  echo $filename
+  echo $dir
+
+  cp $var $var.$ext
+  docker run --rm -it -v $dir:/tmp --entrypoint get_dmrpp opendap/hyrax:snapshot -V -o /tmp/$filename.dmrpp /$filename.$ext
+  rm -rf $dir/conf_* $dir/dmr_* $dir/hyrax_ux
+  rm $var.$ext
+done
