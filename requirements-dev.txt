@@ -1,0 +1,5 @@
+setuptools >= 21.0.0
+pytest~=5.4
+flake8~=3.8
+safety >= 1.8.5
+coverage >= 4.5.4
