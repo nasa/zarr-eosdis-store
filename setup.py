@@ -26,7 +26,7 @@ with io.open(path.join(path.abspath(path.dirname(__file__)), 'requirements-dev.t
 
 setup(
     name="aszarr",
-    version="0.0.1",
+    version=__version__,
     author="Patrick Quinn, Matthew Hanson",
     author_email="patrick@patrickquinn.net",
     description="Zarr Store class for working with EOSDIS cloud data",
