@@ -1,6 +1,6 @@
 # Aszarr Library
 
-Library for doing performance partia reads of remote HDF and NetCDF files using the [Zarr](https://zarr.readthedocs.io/en/stable/) library.
+Library for doing performance partial reads of remote HDF and NetCDF files using the [Zarr](https://zarr.readthedocs.io/en/stable/) library.
 
 ## Installation
 

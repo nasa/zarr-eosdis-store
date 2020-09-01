@@ -17,7 +17,7 @@ with io.open(path.join(path.abspath(path.dirname(__file__)), 'requirements.txt')
 
 # remove direct installs from github
 install_requires = [x.strip() for x in all_reqs if 'git+' not in x]
-dependency_links = [x.strip().replace('git+', '') for x in all_reqs if 'git+' not in x]
+dependency_links = [x.strip().replace('git+', '') for x in all_reqs if 'git+' in x]
 
 # get dev dependencies
 with io.open(path.join(path.abspath(path.dirname(__file__)), 'requirements-dev.txt'), encoding='utf-8') as f:
