@@ -6,6 +6,11 @@ from cachecontrol import CacheController, CacheControlAdapter
 from requests_futures.sessions import FuturesSession
 
 def _build_session():
+    """Build HTTP session using Futures for caching and doing async calls
+
+    Returns:
+        session: A requests session
+    """
     session = FuturesSession()
     cache_adapter = CacheControlAdapter()
     cache_adapter.controller = CacheController(cache=cache_adapter.cache, status_codes=(200, 203, 300, 301, 303, 307))
@@ -17,6 +22,11 @@ _profiles = {}
 
 @contextmanager
 def profiled(name):
+    """Time executions and store in _profiles array
+
+    Args:
+        name (str): Name to use as key in _profiles
+    """
     start = time.time()
     try:
         yield
@@ -26,6 +36,8 @@ def profiled(name):
         _profiles[name] = (prev_count + 1, prev_duration + duration)
 
 def print_profiles():
+    """Print out profile information
+    """
     strs = [ (name, str(count), '%.3fs' % (duration,)) for name, (count, duration) in _profiles.items()]
     strs.insert(0, ('Name', '#', 'Time'))
     str_widths = map(lambda x: map(len, x), strs)

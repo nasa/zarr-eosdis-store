@@ -7,24 +7,23 @@ Library for doing performance partial reads of remote HDF and NetCDF files using
 Aszarr requires ... and is ... It is published to ... To install:
 
 ```bash
-$ pip install aszarr
+$ pip install zarr-eosdis-store
 
 # install specific version
-$ pip install aszarr==0.1.0
+$ pip install zarr-eosdis-store==0.1.0
 
 # in a requirements.txt file - the tilda (~) will install the highest compatible version
-cirrus-lib~=0.1.0
+zarr-eosdis-store~=0.1.0
 ```
 
 ## Modules
 
 | Module   | Description |
 | -------- | ----------- |
-| common   |  |
-| dmrpp    |  |
-| reader   |  |
-| store    |  |
-| version  |  |
+| common   | Internal profiling functions and async HTTP session |
+| dmrpp    | Functions for converting a DMR++ file to Zarr metadata |
+| stores   | Module containing classes for Zarr stores |
+| version  | Contains __version__ |
 
 ### common
 
@@ -34,6 +33,13 @@ cirrus-lib~=0.1.0
 
 #### store
 
+## Usage
+
+TODO
+- DMRPP to Zarr
+- Opening EOSDIS HDF5 file as Zarr store
+- new Jupyter notebook tutorial
+
 
 ## About
-aszarr is ... {TODO - link to parent org and funding agency}
+zarr-eosdis-store is ... {TODO - link to parent org and funding agency}
