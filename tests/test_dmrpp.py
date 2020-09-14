@@ -105,8 +105,6 @@ class Test(unittest.TestCase):
             fixture = json.loads(f.read())
         json1 = json.dumps(fixture, sort_keys=True)
         json2 = json.dumps(zarr, sort_keys=True)
-        #with open('tests/zarr-metadata-test.json', 'w') as f:
-        #    f.write(json.dumps(zarr))
         assert(json1 == json2)
 
     def test_to_zarr_more_examples(self):
