@@ -3,7 +3,7 @@ API Documentation
 
 .. automodule:: eosdis_store
    :members:
-   :undoc-members:
+   :special-members:
    :show-inheritance:
 
 
@@ -31,6 +31,6 @@ eosdis_store.stores module
 
 .. automodule:: eosdis_store.stores
    :members:
-   :undoc-members:
+   :special-members:
    :show-inheritance:
 
