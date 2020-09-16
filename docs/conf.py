@@ -12,17 +12,18 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('..'))
+sys.path.insert(0, os.path.abspath('../../'))
 
 import sphinx_rtd_theme
 
 from importlib.machinery import SourceFileLoader
 
-module = SourceFileLoader('aszarr.version', os.path.abspath('../aszarr/version.py')).load_module()
+module_path = os.path.abspath('../eosdis_store/version.py')
+module = SourceFileLoader('eosdis_store.version', module_path).load_module(None)
 
 # -- Project information -----------------------------------------------------
 
-project = 'aszarr'
+project = 'zarr-eosdis-store'
 copyright = '2020 United States Government as represented by the Administrator of the National Aeronautics and Space Administration. All Rights Reserved.'
 author = 'Patrick Quinn, Matthew Hanson'
 
