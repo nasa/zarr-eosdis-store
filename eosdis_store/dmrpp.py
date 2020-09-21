@@ -1,8 +1,9 @@
+__all__ = ['to_zarr']
+
 import logging
 import os.path as op
 import requests
 import xml.etree.ElementTree as ElementTree
-
 
 logger = logging.getLogger(__name__)
 
@@ -45,7 +46,7 @@ def find_child(node, name):
     Returns:
         XML Element: XML Child Element
     """
-    return node.find(".//d:*[@name='%s']" % (name), NS)    
+    return node.find(".//d:*[@name='%s']" % (name), NS)
 
 
 def get_attribute_values(node):
@@ -73,7 +74,7 @@ def get_attributes(node, exclude=[]):
         dict: Dictionary of Atribute values
     """
     zattrs = {}
-    for child in node:
+    for child in node :
         tag = child.tag.split('}')[-1]
         if tag == 'Attribute' and child.attrib['name'] not in exclude:
             zattrs[child.attrib['name']] = get_attribute_values(child)
@@ -109,7 +110,7 @@ def get_dimensions(root, group=None):
             dim_infos[name]['path'] = node.text
         else:
             dim_infos[name]['path'] = name
-    
+
     # TODO - revisit, don't think this works as intended. Will need test files with groups
     #for child in group.findall('d:Group', NS):
     #    dim_infos.update(get_dimensions(root, child)) #, path + child.attrib['name'] + '/'))
@@ -245,7 +246,7 @@ def group_to_zarr(node, dims, prefix=''):
         if tag in TYPE_INFO:
             zarr_array = array_to_zarr(child, dims, prefix=prefix)
             zarr.update(zarr_array)
-        # otherwise, if this is group or a Container Attribute - this has not been tested 
+        # otherwise, if this is group or a Container Attribute - this has not been tested
         elif tag == 'Group' or (tag == 'Attribute' and child.attrib.get('type', '') == 'Container'):
             name = child.attrib['name']
             # use for global .zattrs
@@ -277,3 +278,4 @@ def to_zarr(root):
     dims = get_dimensions(root)
     zarr = group_to_zarr(root, dims)
     return zarr
+

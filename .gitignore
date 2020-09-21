@@ -1,5 +1,6 @@
 # General
 tmp/
+.DS_Store
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
@@ -28,6 +29,7 @@ share/python-wheels/
 .installed.cfg
 *.egg
 MANIFEST
+docs/_build
 
 # PyInstaller
 #  Usually these files are written by a python script from a template

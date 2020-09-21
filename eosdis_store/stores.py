@@ -68,7 +68,8 @@ class HttpByteRangeReader():
 
 
 class ConsolidatedChunkStore(ConsolidatedMetadataStore):
-    """Zarr store for performing range reads on remote HTTP resources
+    """Zarr store for performing range reads on remote HTTP resources in a way that parallelizes
+    and combines reads.
 
     Args:
         ConsolidatedMetadataStore (ConsolidatedMetadataStore): Parent class using single source of metadata
@@ -77,53 +78,74 @@ class ConsolidatedChunkStore(ConsolidatedMetadataStore):
         """Instantiate ConsolidatedChunkStore
 
         Args:
-            meta_store (dict): Consolidated metadata store
+            meta_store (dict): A Python object with the structure of a consolidated Zarr metadata store
             data_url (str): URL to data file
         """
         self.meta_store = meta_store
         self.chunk_source = HttpByteRangeReader(data_url)
 
     def __getitem__(self, key):
-        """Get a single range of bytes
+        """Get an item from the store
 
         Args:
-            key (str): Chunk key
+            key (str): Key of the item to fetch from the store as defined by Zarr
 
         Returns:
-            chunk: Get chunk
+            The data or metadata value of the item
         """
         return next(self.getitems((key, )))[1]
 
     def getitems(self, keys):
+        """Get values for the provided list of keys from the Zarr store
+
+        Args:
+            keys (Array): Array of string keys to fetch from the store
+
+        Returns:
+            An iterator returning tuples of the input keys to their data or metadata values
+        """
         ranges = []
         for key in keys:
             if re.search(r'/\d+(\.\d+)*$', key):
+                # The key corresponds to a chunk within the file, look up its offset and size
                 path, name = key.rsplit('/', 1)
                 chunk_loc = self.meta_store[path + '/.zchunkstore'][name]
                 ranges.append((key, chunk_loc['offset'], chunk_loc['size']))
             else:
+                # Metadata key, return its value
                 yield (key, super().__getitem__(key))
 
+        # Get all the byte ranges requested
         for k, v in self._getranges(ranges).items():
             yield (k, v)
 
     def _getranges(self, ranges):
+        '''Given a set of byte ranges [(key, offset, size), ...], fetches and returns a mapping of keys to bytes
+
+        Args:
+            ranges (Array): Array of desired byte ranges of the form [(key, offset, size), ...]
+        Returns:
+            dict-like [(key, bytes), (key, bytes), ...]
+        '''
         reader = self.chunk_source
         ranges = sorted(ranges, key=lambda r: r[1])
-        merged_ranges = self.merge_ranges(ranges)
+        merged_ranges = self._merge_ranges(ranges)
         range_data_offsets = [r[-1] for r in merged_ranges]
         logger.debug(f"Merged {len(ranges)} requests into {len(range_data_offsets)}")
 
         range_data = reader.read_ranges([(offset, size) for offset, size, _ in merged_ranges])
         range_data = [r for r in range_data] # FIXME Avoids a seemingly-inconsequential GeneratorExit.  Validate it is inconsequential
-        result = self.split_ranges(zip(range_data_offsets, range_data))
+        result = self._split_ranges(zip(range_data_offsets, range_data))
         return result
 
-    @classmethod
-    def split_ranges(cls, merged_ranges):
-        '''
-        merged_ranges: array of ([[key, sub-offset, size], ...], bytes)
-        result: dict-like [(name, bytes), (name, bytes), ...]
+    def _split_ranges(self, merged_ranges):
+        '''Given tuples of range groups as returned by _merge_ranges and corresponding bytes,
+        returns a map of keys to corresponding bytes.
+
+        Args:
+            merged_ranges (Array): Array of (group, bytes) where group is as returned by _merge_ranges
+        Returns:
+            dict-like [(key, bytes), (key, bytes), ...]
         '''
         result = {}
         for ranges, data in merged_ranges:
@@ -131,25 +153,30 @@ class ConsolidatedChunkStore(ConsolidatedMetadataStore):
                 result[key] = data[offset:(offset+size)]
         return result
 
-    @classmethod
-    def merge_ranges(cls, ranges, max_gap=10000):
-        '''
-        Max gap: Set heuristically to merge nearby ranges such that making a new request costs about
-        the same as getting the extra bytes between the ranges
+    def _merge_ranges(self, ranges, max_gap=10000):
+        '''Group an array of byte ranges that need to be read such that any that are within `max_gap`
+        of each other are in the same group.
 
-        Input ranges = [(key, offset, size), ...]
-        Output ranges = [
-            [
-                offset,
-                size,
+        Args:
+            ranges (Array): An array of tuples of (key, offset, size)
+        Returns:
+            An array of groups of near-adjacent ranges
                 [
-                    (key, sub-offset, size),
-                    (key, sub-offset, size),
+                    [
+                        offset, # The byte offset of the group from the start of the file
+                        size,   # The number of bytes that need to be read
+                        [
+                            (   # Range within group
+                                key,        # The key from the input tuple
+                                sub-offset, # The byte offset of the range from the start of the group
+                                size        # The number of bytes for the range
+                            ),
+                            (key, sub-offset, size),
+                            ...
+                        ]
+                    ],
                     ...
                 ]
-            ],
-            ...
-        ]
         '''
         ranges = sorted(ranges, key=lambda r: r[1])
         if len(ranges) == 0:
@@ -170,12 +197,19 @@ class ConsolidatedChunkStore(ConsolidatedMetadataStore):
         return result
 
 class EosdisStore(ConsolidatedChunkStore):
-    """Store representing a HDF5/NetCDF file with zarr metadata derived from a DMR++ file
+    """Store representing a HDF5/NetCDF file accessed over HTTP with zarr metadata derived from a DMR++ file
 
     Args:
         ConsolidatedChunkStore (ConsolidatedChunkStore): Parent class is a store for doing byte range reads
     """
     def __init__(self, data_url, dmr_url=None):
+        """Construct the store
+
+        Args:
+            data_url (String): The URL of the remote data file which should be accessed through Zarr
+            dmr_url (String): Optional URL to a DMR++ file describing metadata and byte offsets of the
+            given file.  If not provided, the URL is assumed to be the original file with a .dmrpp suffix
+        """
         if dmr_url is None:
             dmr_url = data_url + '.dmrpp'
         with profiled('Get DMR++'):
