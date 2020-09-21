@@ -74,7 +74,7 @@ def get_attributes(node, exclude=[]):
         dict: Dictionary of Atribute values
     """
     zattrs = {}
-    for child in node:
+    for child in node :
         tag = child.tag.split('}')[-1]
         if tag == 'Attribute' and child.attrib['name'] not in exclude:
             zattrs[child.attrib['name']] = get_attribute_values(child)

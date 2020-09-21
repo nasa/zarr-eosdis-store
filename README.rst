@@ -8,6 +8,11 @@ have a sidecar DMR++ metadata file generated.
 Installation
 ============
 
+This module requires Python 3.8 or greater::
+
+    $ python --version
+    Python 3.8.2
+
 Install from PyPI::
 
     $ pip install --extra-index-url https://maven.earthdata.nasa.gov/repository/python-repo/simple/ zarr-eosdis-store
@@ -69,7 +74,7 @@ To allow the technique to work with EOSDIS data, we have extended it and optimiz
 * The store uses HTTPS and authenticates with a ``.netrc`` entry, rather than the S3 API, making it compatible with
   EOSDIS access patterns and requirements
 
-* The store caches redirect URLs for a period of time set by the Cache-Control header.  Doing this lets avoid the overhead
+* The store caches redirect URLs for a period of time set by the Cache-Control header.  Doing this avoids the overhead
   of repeated redirects when accessing parts of files.
 
 * In addition to backward-compatible APIs, the store exposes a proposed API that allows it to make more efficient access
@@ -80,7 +85,7 @@ To allow the technique to work with EOSDIS data, we have extended it and optimiz
     these smaller requests into a single larger request.
 
   * After an initial request to cache any authentication and redirect information, the store runs subsequent requests in
-    parallel
+    parallel.
 
 Development
 ===========
@@ -92,7 +97,7 @@ Clone the repository, then ``pip install`` its dependencies::
 
 To check code coverage and run tests::
 
-    python -m coverage run --source=. -m py.test
+    coverage run -m pytest
 
 To check coding style::
 

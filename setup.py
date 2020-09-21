@@ -40,10 +40,9 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         "Programming Language :: Python :: 3",   # remove once all tested sub-versions are listed
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7'
+        'Programming Language :: Python :: 3.8'
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.8',
     install_requires=install_requires,
     dependency_links=dependency_links,
     extras_require={
