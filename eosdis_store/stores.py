@@ -45,7 +45,7 @@ class HttpByteRangeReader():
         futures = [self._async_read(offset, size) for offset, size in range_iter]
         for future in futures:
             with profiled('Subsequent fetches'):
-                yield future.result().content
+                yield future.result()
 
     def _async_read(self, offset, size):
         """Asynchronous HTTP read
@@ -134,7 +134,8 @@ class ConsolidatedChunkStore(ConsolidatedMetadataStore):
         logger.debug(f"Merged {len(ranges)} requests into {len(range_data_offsets)}")
 
         range_data = reader.read_ranges([(offset, size) for offset, size, _ in merged_ranges])
-        range_data = [r for r in range_data] # FIXME Avoids a seemingly-inconsequential GeneratorExit.  Validate it is inconsequential
+        self.responses = list(range_data)
+        range_data = [r.content for r in self.responses]
         result = self._split_ranges(zip(range_data_offsets, range_data))
         return result
 
@@ -195,6 +196,7 @@ class ConsolidatedChunkStore(ConsolidatedMetadataStore):
             prev_offset = offset + size
         result.append((group_offset, prev_offset - group_offset, group))
         return result
+
 
 class EosdisStore(ConsolidatedChunkStore):
     """Store representing a HDF5/NetCDF file accessed over HTTP with zarr metadata derived from a DMR++ file

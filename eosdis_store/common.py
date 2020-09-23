@@ -5,13 +5,36 @@ import requests
 from cachecontrol import CacheController, CacheControlAdapter
 from requests_futures.sessions import FuturesSession
 
+
+class ElapsedFuturesSession(FuturesSession):
+
+    def request(self, method, url, hooks={}, *args, **kwargs):
+        start = time.time()
+
+        def timing(r, *args, **kwargs):
+            r.start = start
+            r.elapsed = time.time() - start
+
+        try:
+            if isinstance(hooks['response'], (list, tuple)):
+                # needs to be first so we don't time other hooks execution
+                hooks['response'].insert(0, timing)
+            else:
+                hooks['response'] = [timing, hooks['response']]
+        except KeyError:
+            hooks['response'] = timing
+
+        return super(ElapsedFuturesSession, self) \
+            .request(method, url, hooks=hooks, *args, **kwargs)
+
+
 def _build_session():
     """Build HTTP session using Futures for caching and doing async calls
 
     Returns:
         session: A requests session
     """
-    session = FuturesSession()
+    session = ElapsedFuturesSession()
     cache_adapter = CacheControlAdapter()
     cache_adapter.controller = CacheController(cache=cache_adapter.cache, status_codes=(200, 203, 300, 301, 303, 307))
     session.mount('http://', cache_adapter)
