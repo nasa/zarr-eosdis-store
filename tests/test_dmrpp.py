@@ -1,10 +1,11 @@
 import json
 import os
 import unittest
-import xml.etree.ElementTree as ElementTree
-import eosdis_store.dmrpp as dmr
 
-from eosdis_store.common import session, profiled, print_profiles
+import requests
+import xml.etree.ElementTree as ElementTree
+
+import eosdis_store.dmrpp as dmr
 
 
 testpath = os.path.dirname(__file__)
@@ -20,15 +21,9 @@ class Test(unittest.TestCase):
 
     @classmethod
     def get_test_xml(cls, idx=0):
-        with profiled('Get DMR++'):
-            dmrpp = session.get(cls.test_files[idx]).result().text
-            tree = ElementTree.fromstring(dmrpp)
+        dmrpp = requests.get(cls.test_files[idx]).text
+        tree = ElementTree.fromstring(dmrpp)
         return tree
-
-    @classmethod
-    def tearDownClass(cls):
-        print()
-        print_profiles()
 
     def test_find_child(self):
         tree = self.get_test_xml()

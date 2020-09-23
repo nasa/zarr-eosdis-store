@@ -1,12 +1,43 @@
 import logging
 import re
+import time
+
+from cachecontrol import CacheController, CacheControlAdapter
+import requests
+from requests_futures.sessions import FuturesSession
 import xml.etree.ElementTree as ElementTree
 
-from .common import session, profiled
 from .dmrpp import to_zarr
 from zarr.storage import ConsolidatedMetadataStore
 
 logger = logging.getLogger(__name__)
+
+
+class ElapsedFuturesSession(FuturesSession):
+    """Track start time and elapsed time for all requests in this session
+
+    Args:
+        FuturesSession (FuturesSession): Parent class
+    """
+
+    def request(self, method, url, hooks={}, *args, **kwargs):
+        start = time.time()
+
+        def timing(r, *args, **kwargs):
+            r.start = start
+            r.elapsed = time.time() - start
+
+        try:
+            if isinstance(hooks['response'], (list, tuple)):
+                # needs to be first so we don't time other hooks execution
+                hooks['response'].insert(0, timing)
+            else:
+                hooks['response'] = [timing, hooks['response']]
+        except KeyError:
+            hooks['response'] = timing
+
+        return super(ElapsedFuturesSession, self) \
+            .request(method, url, hooks=hooks, *args, **kwargs)
 
 
 class HttpByteRangeReader():
@@ -20,6 +51,16 @@ class HttpByteRangeReader():
         """
         self.url = url
         self.first_fetch = True
+
+        # create futures session
+        self.session = ElapsedFuturesSession()
+        cache_adapter = CacheControlAdapter()
+        cache_adapter.controller = CacheController(
+            cache=cache_adapter.cache,
+            status_codes=(200, 203, 300, 301, 303, 307)
+        )
+        self.session.mount('http://', cache_adapter)
+        self.session.mount('https://', cache_adapter)
 
     def read_range(self, offset, size):
         """Read a range of bytes from remote file
@@ -44,8 +85,7 @@ class HttpByteRangeReader():
         """
         futures = [self._async_read(offset, size) for offset, size in range_iter]
         for future in futures:
-            with profiled('Subsequent fetches'):
-                yield future.result()
+            yield future.result()
 
     def _async_read(self, offset, size):
         """Asynchronous HTTP read
@@ -59,11 +99,10 @@ class HttpByteRangeReader():
         """
         logger.debug(f"Reading {self.url} [{offset}:{offset+size}] ({size} bytes)")
         range_str = '%d-%d' % (offset, offset + size)
-        request = session.get(self.url, headers={ 'Range': 'bytes=' + range_str })
+        request = self.session.get(self.url, headers={ 'Range': 'bytes=' + range_str })
         if self.first_fetch:
             self.first_fetch = False
-            with profiled('First fetch'):
-                request.result()
+            request.result()
         return request
 
 
@@ -214,9 +253,7 @@ class EosdisStore(ConsolidatedChunkStore):
         """
         if dmr_url is None:
             dmr_url = data_url + '.dmrpp'
-        with profiled('Get DMR++'):
-            dmrpp = session.get(dmr_url).result().text
-            tree = ElementTree.fromstring(dmrpp)
-        with profiled('DMR++ Transform'):
-            meta_store = to_zarr(tree)
+        dmrpp = requests.get(dmr_url).text
+        tree = ElementTree.fromstring(dmrpp)
+        meta_store = to_zarr(tree)
         super(EosdisStore, self).__init__(meta_store, data_url)

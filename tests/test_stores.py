@@ -1,11 +1,12 @@
 import json
 import os
 import unittest
+
+import requests
 import xml.etree.ElementTree as ElementTree
 import zarr
 
 from eosdis_store import EosdisStore
-from eosdis_store.common import session, profiled, print_profiles
 
 testpath = os.path.dirname(__file__)
 
@@ -19,15 +20,9 @@ class Test(unittest.TestCase):
 
     @classmethod
     def get_test_xml(cls):
-        with profiled('Get DMR++'):
-            dmrpp = session.get(cls.dmr_url).result().text
-            tree = ElementTree.fromstring(dmrpp)
+        dmrpp = requests.get(cls.dmr_url).text
+        tree = ElementTree.fromstring(dmrpp)
         return tree
-
-    @classmethod
-    def tearDownClass(cls):
-        print()
-        print_profiles()
 
     @classmethod
     def open_eosdis_store(cls):
