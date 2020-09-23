@@ -10,7 +10,7 @@ from eosdis_store.common import session, profiled, print_profiles
 testpath = os.path.dirname(__file__)
 
 
-class TestSSMIS(unittest.TestCase):
+class Test(unittest.TestCase):
 
     data_url = 'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/f16_ssmis_20051022v7.nc'
     dmr_url = data_url + '.dmrpp'
@@ -58,3 +58,31 @@ class TestSSMIS(unittest.TestCase):
         assert(arr.shape == (149, 221))
         assert(arr[0][0] == 19)
         assert(arr.mean() == 169.29050381123022)
+
+    def test_eosdis_store_getranges_combined(self):
+        store = EosdisStore(self.data_url)
+        ranges = [
+            ('wind_speed/0.4.11', 768280, 6830),
+            ('wind_speed/0.4.12', 775112, 5759)
+        ]
+        result = store._getranges(ranges)
+        assert(len(result) == 2)
+        assert(len(store.responses) == 1)
+
+    def test_eosdis_store_getranges_split(self):
+        store = EosdisStore(self.data_url)
+        ranges = [
+            ('wind_speed/0.4.11', 768280, 6830),
+            ('wind_speed/0.4.12', 785112, 5759)
+        ]
+        result = store._getranges(ranges)
+        assert(len(result) == 2)
+        assert(len(store.responses) == 2)
+
+    def test_eosdis_store_parallel_reads(self):
+        store = self.open_eosdis_store()
+        arr = store['wind_speed'][self.aoi]
+        responses = store.store.responses
+        end_time = responses[0].start + responses[1].elapsed
+        for r in responses[1:]:
+            assert(r.start < end_time)

@@ -116,6 +116,4 @@ class Test(unittest.TestCase):
                 fixture = json.loads(f.read())
             json1 = json.dumps(fixture, sort_keys=True)
             json2 = json.dumps(zarr, sort_keys=True)
-            with open(os.path.join(testpath, f"{bname}.zarr.json"), 'w') as f:
-                f.write(json.dumps(zarr))
             assert(json1 == json2)
