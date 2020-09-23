@@ -111,7 +111,7 @@ def get_dimensions(root, group=None):
         else:
             dim_infos[name]['path'] = name
 
-    # TODO - revisit, don't think this works as intended. Will need test files with groups
+    # TODO - HARMONY-530, don't think this works as originally intended. Need test files with nested groups
     #for child in group.findall('d:Group', NS):
     #    dim_infos.update(get_dimensions(root, child)) #, path + child.attrib['name'] + '/'))
     return dim_infos
