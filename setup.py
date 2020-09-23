@@ -9,7 +9,7 @@ with open("README.md", "r") as f:
     long_description = f.read()
 
 # get version of package
-__version__ = load_source('aszarr.version', 'aszarr/version.py').__version__
+__version__ = load_source('eosdis_store.version', 'eosdis_store/version.py').__version__
 
 # get the dependencies and installs
 with io.open(path.join(path.abspath(path.dirname(__file__)), 'requirements.txt'), encoding='utf-8') as f:
@@ -25,7 +25,7 @@ with io.open(path.join(path.abspath(path.dirname(__file__)), 'requirements-dev.t
 
 
 setup(
-    name="aszarr",
+    name="zarr-eosdis-store",
     version=__version__,
     author="Patrick Quinn, Matthew Hanson",
     author_email="patrick@patrickquinn.net",
@@ -40,10 +40,9 @@ setup(
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         "Programming Language :: Python :: 3",   # remove once all tested sub-versions are listed
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7'
+        'Programming Language :: Python :: 3.8'
     ],
-    python_requires='>=3.6',
+    python_requires='>=3.8',
     install_requires=install_requires,
     dependency_links=dependency_links,
     extras_require={
