@@ -227,7 +227,7 @@ class ConsolidatedChunkStore(ConsolidatedMetadataStore):
         result = []
         for key, offset, size in ranges:
             if offset - prev_offset > max_gap + 1:
-                print("Starting new range due to gap of %d bytes" % (offset - prev_offset,))
+                logger.debug("Starting new range due to gap of %d bytes" % (offset - prev_offset,))
                 result.append((group_offset, prev_offset - group_offset, group))
                 group_offset = offset
                 group = []

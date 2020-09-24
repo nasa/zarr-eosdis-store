@@ -4,3 +4,4 @@ requests-futures>=1.0.0
 # Updates to Zarr to implement the getitems method proposed in https://github.com/zarr-developers/zarr-python/issues/536
 zarr @ git+https://github.com/bilts/zarr-python.git@getitems-prototype#egg=zarr
 ipypb~=0.5
+xarray~=0.16
