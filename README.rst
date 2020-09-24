@@ -55,10 +55,57 @@ not .zarr.
    import zarr
 
    # Assumes you have set up .netrc with your Earthdata Login information
-   f = zarr.open(Store('https://example.com/your/data/file.nc4'))
+   f = zarr.open(EosdisStore('https://example.com/your/data/file.nc4'))
 
    # Read metadata and data from f using the Zarr API
    print(f['parameter_name'][0:0:0])
+
+If the data has _FillValue (to flag nodata), scale_factor, or add_offset set (defined in metadata using CF-conventions)
+they can be retrieved from the parameter attributes.
+
+.. code-block:: python
+
+  import numpy as np
+
+  scale_factor = f['parameter_name].scale_factor
+  add_offset = f['parameter_name].add_offset
+  nodata = f['parameter_name]._FillValue
+
+  arr = f['parameter_name'][] * scale_factor + add_offset
+
+  nodata_locs = np.where(arr == nodata)
+
+
+A better way to handle these is to use XArray. Rather than reading the data immediately when a slice is requested, XArray
+defers the read until the data is actually accessed. With the Zarr backend to XArray, the scale and offset can be set so that
+when the data is accessed it will apply those values. This is more efficient if the data is going to be used in other operations.
+
+The scale_factor and get_offset will be used if specified in the NetCDF/HDF5 file.
+
+.. code-block:: python
+
+  import xarray
+
+  store = EosdisStore('https://example.com/your/data/file.nc4')
+
+  f = xarray.open_zarr(store)
+
+  # the data is not read yet
+  xa = f['parameter_name'][<slice>]
+
+  # convert to numpy array, data is read
+  arr = xa.values
+
+The resulting array will have had scale and offset applied, and any element that is equal to the _FillValue attribute will be
+set to numpy `nan`. To use XArray without apply the scale and offset or setting the nodata to `nan`, supply the `mask_and_scale`
+keyword to xarray.open_zarr to False:
+
+.. code-block:: python
+
+  store = EosdisStore('https://example.com/your/data/file.nc4')
+
+  f = xarray.open_zarr(store, mask_and_scale=False)
+
 
 Technical Summary
 =================
