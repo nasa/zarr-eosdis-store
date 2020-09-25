@@ -5,7 +5,7 @@ from os import path
 import io
 
 # use README for setup desciption
-with open("README.md", "r") as f:
+with open("README.rst", "r") as f:
     long_description = f.read()
 
 # get version of package
