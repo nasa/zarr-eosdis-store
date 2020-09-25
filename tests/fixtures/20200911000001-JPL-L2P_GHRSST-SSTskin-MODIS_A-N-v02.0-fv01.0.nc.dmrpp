@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<Dataset xmlns="http://xml.opendap.org/ns/DAP/4.0#" xmlns:dmrpp="http://xml.opendap.org/dap/dmrpp/1.0.0#" dapVersion="4.0" dmrVersion="1.0" name="20200911000001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc" dmrpp:href="OPeNDAP_DMRpp_DATA_ACCESS_URL">
+    <Dimension name="time" size="1"/>
+    <Dimension name="nj" size="2030"/>
+    <Dimension name="ni" size="1354"/>
+    <Int16 name="wind_speed">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>10m wind speed</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>wind_speed</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>m s-1</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-128</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-127</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>127</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>Wind at 10 meters above the sea surface</Value>
+        </Attribute>
+        <Attribute name="scale_factor" type="Float32">
+            <Value>0.2000000030</Value>
+        </Attribute>
+        <Attribute name="add_offset" type="Float32">
+            <Value>25.00000000</Value>
+        </Attribute>
+        <Attribute name="source" type="String">
+            <Value>TBD.  Placeholder.  Currently empty</Value>
+        </Attribute>
+        <Attribute name="grid_mapping" type="String">
+            <Value>TBD</Value>
+        </Attribute>
+        <Attribute name="time_offset" type="Float32">
+            <Value>2.000000000</Value>
+        </Attribute>
+        <Attribute name="height" type="String">
+            <Value>10 m</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>auxiliaryInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>wind_speed</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/wind_speed</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="27358005" nBytes="689" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="27358694" nBytes="689" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="27359383" nBytes="689" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="27360072" nBytes="689" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="sses_standard_deviation">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>SSES standard deviation error based on proximity confidence flags</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>kelvin</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-128</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-127</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>127</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>thermal IR SST standard deviation error; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</Value>
+        </Attribute>
+        <Attribute name="scale_factor" type="Float32">
+            <Value>0.07874015719</Value>
+        </Attribute>
+        <Attribute name="add_offset" type="Float32">
+            <Value>10.00000000</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>auxiliaryInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>sses_standard_deviation</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/sses_standard_deviation</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="22317539" nBytes="23320" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="22340859" nBytes="28041" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="22368900" nBytes="13222" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="22382122" nBytes="4287" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="sst_dtime">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>time difference from reference time</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>seconds</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-32768</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-32767</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>32767</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>time plus sst_dtime gives seconds after 00:00:00 UTC January 1, 1981</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>referenceInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>sst_dtime</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/sst_dtime</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="22145604" nBytes="1577" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="22147181" nBytes="1577" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="22148758" nBytes="1579" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="22150337" nBytes="1579" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="l2p_flags">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>L2P flags</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>0</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>16</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>These flags can be used to further filter data variables</Value>
+        </Attribute>
+        <Attribute name="flag_meanings" type="String">
+            <Value>microwave land ice lake river</Value>
+        </Attribute>
+        <Attribute name="flag_masks" type="Int16">
+            <Value>1</Value>
+            <Value>2</Value>
+            <Value>4</Value>
+            <Value>8</Value>
+            <Value>16</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>qualityInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>l2p_flags</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/l2p_flags</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="22393463" nBytes="1354" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="22394817" nBytes="1354" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="22396171" nBytes="1381" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="22397552" nBytes="1354" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="sea_surface_temperature">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>sea surface temperature</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>sea_surface_skin_temperature</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>kelvin</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-32767</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-1000</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>10000</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>sea surface temperature from thermal IR (11 um) channels</Value>
+        </Attribute>
+        <Attribute name="scale_factor" type="Float32">
+            <Value>0.004999999888</Value>
+        </Attribute>
+        <Attribute name="add_offset" type="Float32">
+            <Value>273.1499939</Value>
+        </Attribute>
+        <Attribute name="source" type="String">
+            <Value>NASA and University of Miami</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>physicalMeasurement</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>sea_surface_temperature</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/sea_surface_temperature</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="17538750" nBytes="1200672" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="18739422" nBytes="1157643" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="19897065" nBytes="1115469" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="21012534" nBytes="1126406" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="quality_level">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>quality level of SST pixel</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-128</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>0</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>5</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>thermal IR SST proximity confidence value; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</Value>
+        </Attribute>
+        <Attribute name="flag_values" type="Int16">
+            <Value>0</Value>
+            <Value>1</Value>
+            <Value>2</Value>
+            <Value>3</Value>
+            <Value>4</Value>
+            <Value>5</Value>
+        </Attribute>
+        <Attribute name="flag_meanings" type="String">
+            <Value>no_data bad_data worst_quality low_quality acceptable_quality best_quality</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>qualityInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>quality_level</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/quality_level</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="22162994" nBytes="24444" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="22187438" nBytes="30682" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="22218120" nBytes="13679" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="22231799" nBytes="4661" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="dt_analysis">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>deviation from SST reference climatology</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>kelvin</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-128</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-127</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>127</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>TBD</Value>
+        </Attribute>
+        <Attribute name="scale_factor" type="Float32">
+            <Value>0.1000000015</Value>
+        </Attribute>
+        <Attribute name="add_offset" type="Float32">
+            <Value>0.000000000</Value>
+        </Attribute>
+        <Attribute name="source" type="String">
+            <Value>TBD. Placeholder.  Currently empty</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>auxiliaryInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>dt_analysis</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/dt_analysis</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="27367954" nBytes="689" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="27368643" nBytes="689" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="27369332" nBytes="689" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="27370021" nBytes="689" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="sses_standard_deviation_4um">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>SSES standard deviation error based on proximity confidence flags</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>kelvin</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-128</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-127</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>127</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>mid-IR SST standard deviation error; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</Value>
+        </Attribute>
+        <Attribute name="scale_factor" type="Float32">
+            <Value>0.07874015719</Value>
+        </Attribute>
+        <Attribute name="add_offset" type="Float32">
+            <Value>10.00000000</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>auxiliaryInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>sses_standard_deviation_4um</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/sses_standard_deviation_4um</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="27251747" nBytes="30619" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="27282366" nBytes="39107" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="27321473" nBytes="18171" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="27339644" nBytes="6275" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="sses_bias_4um">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>SSES bias error based on proximity confidence flags</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>kelvin</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-128</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-127</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>127</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>mid-IR SST bias error; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</Value>
+        </Attribute>
+        <Attribute name="scale_factor" type="Float32">
+            <Value>0.1574803144</Value>
+        </Attribute>
+        <Attribute name="add_offset" type="Float32">
+            <Value>0.000000000</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>auxiliaryInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>sses_bias_4um</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/sses_bias_4um</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="27160872" nBytes="27847" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="27188719" nBytes="35589" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="27224308" nBytes="14687" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="27238995" nBytes="5623" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="sses_bias">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>SSES bias error based on proximity confidence flags</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>kelvin</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-128</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-127</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>127</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>thermal IR SST bias error; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</Value>
+        </Attribute>
+        <Attribute name="scale_factor" type="Float32">
+            <Value>0.1574803144</Value>
+        </Attribute>
+        <Attribute name="add_offset" type="Float32">
+            <Value>0.000000000</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>auxiliaryInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>sses_bias</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/sses_bias</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="22244733" nBytes="22729" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="22267462" nBytes="26981" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="22294443" nBytes="12149" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="22306592" nBytes="4272" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="sea_surface_temperature_4um">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>sea surface temperature</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>kelvin</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-32767</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>-1000</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>10000</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>sea surface temperature from mid-IR (4 um) channels; non L2P core field</Value>
+        </Attribute>
+        <Attribute name="scale_factor" type="Float32">
+            <Value>0.004999999888</Value>
+        </Attribute>
+        <Attribute name="add_offset" type="Float32">
+            <Value>273.1499939</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>physicalMeasurement</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>sea_surface_temperature_4um</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/sea_surface_temperature_4um</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="22405618" nBytes="1197232" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="23602850" nBytes="1171640" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="24774490" nBytes="1141479" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="25915969" nBytes="1153202" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int16 name="quality_level_4um">
+        <Dim name="/time"/>
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>quality level of SST pixel</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Int16">
+            <Value>-128</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Int16">
+            <Value>0</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Int16">
+            <Value>5</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>mid-IR SST proximity confidence value; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value</Value>
+        </Attribute>
+        <Attribute name="flag_values" type="Int16">
+            <Value>0</Value>
+            <Value>1</Value>
+            <Value>2</Value>
+            <Value>3</Value>
+            <Value>4</Value>
+            <Value>5</Value>
+        </Attribute>
+        <Attribute name="flag_meanings" type="String">
+            <Value>no_data bad_data worst_quality low_quality acceptable_quality best_quality</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>qualityInformation</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>quality_level_4um</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/quality_level_4um</Value>
+        </Attribute>
+        <Attribute name="coordinates" type="String">
+            <Value>time lat lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1 1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="27076250" nBytes="25483" chunkPositionInArray="[0,0,0]"/>
+            <dmrpp:chunk offset="27101733" nBytes="33457" chunkPositionInArray="[0,0,677]"/>
+            <dmrpp:chunk offset="27135190" nBytes="13796" chunkPositionInArray="[0,1015,0]"/>
+            <dmrpp:chunk offset="27148986" nBytes="5147" chunkPositionInArray="[0,1015,677]"/>
+        </dmrpp:chunks>
+    </Int16>
+    <Int32 name="time">
+        <Dim name="/time"/>
+        <Attribute name="long_name" type="String">
+            <Value>reference time of sst file</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>seconds since 1981-01-01 00:00:00</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>time of first sensor observation</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>time</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/time</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="17528467" nBytes="12" chunkPositionInArray="[0]"/>
+        </dmrpp:chunks>
+    </Int32>
+    <Float32 name="lat">
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>latitude</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>latitude</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>degrees_north</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Float32">
+            <Value>-999.0000000</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Float32">
+            <Value>-90.00000000</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Float32">
+            <Value>90.00000000</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>geographical coordinates, WGS84 projection</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>lat</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/lat</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="19762" nBytes="2073756" chunkPositionInArray="[0,0]"/>
+            <dmrpp:chunk offset="2093518" nBytes="1940803" chunkPositionInArray="[0,677]"/>
+            <dmrpp:chunk offset="4034321" nBytes="2080328" chunkPositionInArray="[1015,0]"/>
+            <dmrpp:chunk offset="6114649" nBytes="1911892" chunkPositionInArray="[1015,677]"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Float32 name="lon">
+        <Dim name="/nj"/>
+        <Dim name="/ni"/>
+        <Attribute name="long_name" type="String">
+            <Value>longitude</Value>
+        </Attribute>
+        <Attribute name="standard_name" type="String">
+            <Value>longitude</Value>
+        </Attribute>
+        <Attribute name="units" type="String">
+            <Value>degrees_east</Value>
+        </Attribute>
+        <Attribute name="_FillValue" type="Float32">
+            <Value>-999.0000000</Value>
+        </Attribute>
+        <Attribute name="valid_min" type="Float32">
+            <Value>-180.0000000</Value>
+        </Attribute>
+        <Attribute name="valid_max" type="Float32">
+            <Value>180.0000000</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>geographical coordinates, WGS84 projection</Value>
+        </Attribute>
+        <Attribute name="coverage_content_type" type="String">
+            <Value>coordinate</Value>
+        </Attribute>
+        <Attribute name="origname" type="String">
+            <Value>lon</Value>
+        </Attribute>
+        <Attribute name="fullnamepath" type="String">
+            <Value>/lon</Value>
+        </Attribute>
+        <dmrpp:chunks compressionType="deflate">
+            <dmrpp:chunkDimensionSizes>1015 677</dmrpp:chunkDimensionSizes>
+            <dmrpp:chunk offset="8032699" nBytes="2408756" chunkPositionInArray="[0,0]"/>
+            <dmrpp:chunk offset="10441455" nBytes="2316773" chunkPositionInArray="[0,677]"/>
+            <dmrpp:chunk offset="12758228" nBytes="2460793" chunkPositionInArray="[1015,0]"/>
+            <dmrpp:chunk offset="15219021" nBytes="2306544" chunkPositionInArray="[1015,677]"/>
+        </dmrpp:chunks>
+    </Float32>
+    <Attribute name="HDF5_GLOBAL" type="Container">
+        <Attribute name="Conventions" type="String">
+            <Value>CF-1.7, ACDD-1.3</Value>
+        </Attribute>
+        <Attribute name="title" type="String">
+            <Value>MODIS Aqua L2P SST</Value>
+        </Attribute>
+        <Attribute name="summary" type="String">
+            <Value>Sea surface temperature retrievals produced at the NASA OBPG for the MODIS Aqua sensor.  These have been reformatted to GHRSST GDS specifications by the JPL PO.DAAC</Value>
+        </Attribute>
+        <Attribute name="references" type="String">
+            <Value>GHRSST Data Processing Specification v2r5</Value>
+        </Attribute>
+        <Attribute name="institution" type="String">
+            <Value>NASA/JPL/OBPG/RSMAS</Value>
+        </Attribute>
+        <Attribute name="history" type="String">
+            <Value>MODIS L2P created at JPL PO.DAAC</Value>
+        </Attribute>
+        <Attribute name="comment" type="String">
+            <Value>L2P Core without DT analysis or other ancillary fields; Night, Start Node:Descending, End Node:Descending; WARNING Some applications are unable to properly handle signed byte values. If values are encountered &gt; 127, please subtract 256 from this reported value; Quicklook</Value>
+        </Attribute>
+        <Attribute name="license" type="String">
+            <Value>GHRSST and PO.DAAC protocol allow data use as free and open.</Value>
+        </Attribute>
+        <Attribute name="id" type="String">
+            <Value>MODIS_A-JPL-L2P-v2019.0</Value>
+        </Attribute>
+        <Attribute name="naming_authority" type="String">
+            <Value>org.ghrsst</Value>
+        </Attribute>
+        <Attribute name="product_version" type="String">
+            <Value>2019.0</Value>
+        </Attribute>
+        <Attribute name="uuid" type="String">
+            <Value>f6e1f61d-c4a4-4c17-8354-0c15e12d688b</Value>
+        </Attribute>
+        <Attribute name="gds_version_id" type="String">
+            <Value>2.0</Value>
+        </Attribute>
+        <Attribute name="netcdf_version_id" type="String">
+            <Value>4.1</Value>
+        </Attribute>
+        <Attribute name="date_created" type="String">
+            <Value>20200911T024514Z</Value>
+        </Attribute>
+        <Attribute name="file_quality_level" type="Int32">
+            <Value>3</Value>
+        </Attribute>
+        <Attribute name="spatial_resolution" type="String">
+            <Value>1km</Value>
+        </Attribute>
+        <Attribute name="start_time" type="String">
+            <Value>20200911T000001Z</Value>
+        </Attribute>
+        <Attribute name="time_coverage_start" type="String">
+            <Value>20200911T000001Z</Value>
+        </Attribute>
+        <Attribute name="stop_time" type="String">
+            <Value>20200911T000458Z</Value>
+        </Attribute>
+        <Attribute name="time_coverage_end" type="String">
+            <Value>20200911T000458Z</Value>
+        </Attribute>
+        <Attribute name="northernmost_latitude" type="Float32">
+            <Value>-36.22299957</Value>
+        </Attribute>
+        <Attribute name="southernmost_latitude" type="Float32">
+            <Value>-57.91799927</Value>
+        </Attribute>
+        <Attribute name="easternmost_longitude" type="Float32">
+            <Value>31.05480003</Value>
+        </Attribute>
+        <Attribute name="westernmost_longitude" type="Float32">
+            <Value>-7.165909767</Value>
+        </Attribute>
+        <Attribute name="source" type="String">
+            <Value>MODIS sea surface temperature observations for the OBPG</Value>
+        </Attribute>
+        <Attribute name="platform" type="String">
+            <Value>Aqua</Value>
+        </Attribute>
+        <Attribute name="sensor" type="String">
+            <Value>MODIS</Value>
+        </Attribute>
+        <Attribute name="metadata_link" type="String">
+            <Value>http://podaac.jpl.nasa.gov/ws/metadata/dataset/?format=iso&amp;shortName=MODIS_A-JPL-L2P-v2019.0</Value>
+        </Attribute>
+        <Attribute name="keywords" type="String">
+            <Value>Oceans &gt; Ocean Temperature &gt; Sea Surface Temperature</Value>
+        </Attribute>
+        <Attribute name="keywords_vocabulary" type="String">
+            <Value>NASA Global Change Master Directory (GCMD) Science Keywords</Value>
+        </Attribute>
+        <Attribute name="standard_name_vocabulary" type="String">
+            <Value>NetCDF Climate and Forecast (CF) Metadata Convention</Value>
+        </Attribute>
+        <Attribute name="geospatial_lat_units" type="String">
+            <Value>degrees_north</Value>
+        </Attribute>
+        <Attribute name="geospatial_lat_resolution" type="Float32">
+            <Value>0.009999999776</Value>
+        </Attribute>
+        <Attribute name="geospatial_lon_units" type="String">
+            <Value>degrees_east</Value>
+        </Attribute>
+        <Attribute name="geospatial_lon_resolution" type="Float32">
+            <Value>0.009999999776</Value>
+        </Attribute>
+        <Attribute name="acknowledgment" type="String">
+            <Value>The MODIS L2P sea surface temperature data are sponsored by NASA</Value>
+        </Attribute>
+        <Attribute name="creator_name" type="String">
+            <Value>Ed Armstrong, JPL PO.DAAC</Value>
+        </Attribute>
+        <Attribute name="creator_email" type="String">
+            <Value>edward.m.armstrong@jpl.nasa.gov</Value>
+        </Attribute>
+        <Attribute name="creator_url" type="String">
+            <Value>http://podaac.jpl.nasa.gov</Value>
+        </Attribute>
+        <Attribute name="project" type="String">
+            <Value>Group for High Resolution Sea Surface Temperature</Value>
+        </Attribute>
+        <Attribute name="publisher_name" type="String">
+            <Value>The GHRSST Project Office</Value>
+        </Attribute>
+        <Attribute name="publisher_url" type="String">
+            <Value>http://www.ghrsst.org</Value>
+        </Attribute>
+        <Attribute name="publisher_email" type="String">
+            <Value>ghrsst-po@nceo.ac.uk</Value>
+        </Attribute>
+        <Attribute name="processing_level" type="String">
+            <Value>L2P</Value>
+        </Attribute>
+        <Attribute name="cdm_data_type" type="String">
+            <Value>swath</Value>
+        </Attribute>
+        <Attribute name="startDirection" type="String">
+            <Value>Descending</Value>
+        </Attribute>
+        <Attribute name="endDirection" type="String">
+            <Value>Descending</Value>
+        </Attribute>
+        <Attribute name="day_night_flag" type="String">
+            <Value>Night</Value>
+        </Attribute>
+    </Attribute>
+</Dataset>

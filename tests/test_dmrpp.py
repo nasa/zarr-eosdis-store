@@ -16,7 +16,9 @@ class Test(unittest.TestCase):
     test_files = [
         'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/f16_ssmis_20051022v7.nc.dmrpp',
         'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S000000-E002959.0000.V06B.HDF5.dmrpp',
-        #'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S233000-E235959.1410.V06B.HDF5.dmrpp',
+        # MODIS data
+        'https://archive.podaac.uat.earthdata.nasa.gov/podaac-uat-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20200911000001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc.dmrpp'
+        # 'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S233000-E235959.1410.V06B.HDF5.dmrpp',
     ]
 
     @classmethod
@@ -103,9 +105,10 @@ class Test(unittest.TestCase):
         assert(json1 == json2)
 
     def test_to_zarr_more_examples(self):
-        for i in range(1, len(self.test_files)):
+        for i in range(2, len(self.test_files)):
             tree = self.get_test_xml(i)
             zarr = dmr.to_zarr(tree)
+
             bname = os.path.splitext(os.path.basename(self.test_files[i].replace('.dmrpp', '')))[0]
             with open(os.path.join(testpath, 'fixtures', f"{bname}.zarr.json")) as f:
                 fixture = json.loads(f.read())

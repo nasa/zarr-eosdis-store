@@ -1,0 +1,885 @@
+{
+    ".zgroup": {
+        "zarr_format": 2
+    },
+    "wind_speed/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -128
+    },
+    "wind_speed/.zattrs": {
+        "long_name": "10m wind speed",
+        "standard_name": "wind_speed",
+        "units": "m s-1",
+        "_FillValue": -128,
+        "valid_min": -127,
+        "valid_max": 127,
+        "comment": "Wind at 10 meters above the sea surface",
+        "scale_factor": 0.200000003,
+        "add_offset": 25.0,
+        "source": "TBD.  Placeholder.  Currently empty",
+        "grid_mapping": "TBD",
+        "time_offset": 2.0,
+        "height": "10 m",
+        "coverage_content_type": "auxiliaryInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "wind_speed/.zchunkstore": {
+        "0.0.0": {
+            "offset": 27358005,
+            "size": 689
+        },
+        "0.0.1": {
+            "offset": 27358694,
+            "size": 689
+        },
+        "0.1.0": {
+            "offset": 27359383,
+            "size": 689
+        },
+        "0.1.1": {
+            "offset": 27360072,
+            "size": 689
+        }
+    },
+    "sses_standard_deviation/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -128
+    },
+    "sses_standard_deviation/.zattrs": {
+        "long_name": "SSES standard deviation error based on proximity confidence flags",
+        "units": "kelvin",
+        "_FillValue": -128,
+        "valid_min": -127,
+        "valid_max": 127,
+        "comment": "thermal IR SST standard deviation error; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered > 127, please subtract 256 from this reported value",
+        "scale_factor": 0.07874015719,
+        "add_offset": 10.0,
+        "coverage_content_type": "auxiliaryInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "sses_standard_deviation/.zchunkstore": {
+        "0.0.0": {
+            "offset": 22317539,
+            "size": 23320
+        },
+        "0.0.1": {
+            "offset": 22340859,
+            "size": 28041
+        },
+        "0.1.0": {
+            "offset": 22368900,
+            "size": 13222
+        },
+        "0.1.1": {
+            "offset": 22382122,
+            "size": 4287
+        }
+    },
+    "sst_dtime/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -32768
+    },
+    "sst_dtime/.zattrs": {
+        "long_name": "time difference from reference time",
+        "units": "seconds",
+        "_FillValue": -32768,
+        "valid_min": -32767,
+        "valid_max": 32767,
+        "comment": "time plus sst_dtime gives seconds after 00:00:00 UTC January 1, 1981",
+        "coverage_content_type": "referenceInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "sst_dtime/.zchunkstore": {
+        "0.0.0": {
+            "offset": 22145604,
+            "size": 1577
+        },
+        "0.0.1": {
+            "offset": 22147181,
+            "size": 1577
+        },
+        "0.1.0": {
+            "offset": 22148758,
+            "size": 1579
+        },
+        "0.1.1": {
+            "offset": 22150337,
+            "size": 1579
+        }
+    },
+    "l2p_flags/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": null
+    },
+    "l2p_flags/.zattrs": {
+        "long_name": "L2P flags",
+        "valid_min": 0,
+        "valid_max": 16,
+        "comment": "These flags can be used to further filter data variables",
+        "flag_meanings": "microwave land ice lake river",
+        "flag_masks": [
+            1,
+            2,
+            4,
+            8,
+            16
+        ],
+        "coverage_content_type": "qualityInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "l2p_flags/.zchunkstore": {
+        "0.0.0": {
+            "offset": 22393463,
+            "size": 1354
+        },
+        "0.0.1": {
+            "offset": 22394817,
+            "size": 1354
+        },
+        "0.1.0": {
+            "offset": 22396171,
+            "size": 1381
+        },
+        "0.1.1": {
+            "offset": 22397552,
+            "size": 1354
+        }
+    },
+    "sea_surface_temperature/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -32767
+    },
+    "sea_surface_temperature/.zattrs": {
+        "long_name": "sea surface temperature",
+        "standard_name": "sea_surface_skin_temperature",
+        "units": "kelvin",
+        "_FillValue": -32767,
+        "valid_min": -1000,
+        "valid_max": 10000,
+        "comment": "sea surface temperature from thermal IR (11 um) channels",
+        "scale_factor": 0.004999999888,
+        "add_offset": 273.1499939,
+        "source": "NASA and University of Miami",
+        "coverage_content_type": "physicalMeasurement",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "sea_surface_temperature/.zchunkstore": {
+        "0.0.0": {
+            "offset": 17538750,
+            "size": 1200672
+        },
+        "0.0.1": {
+            "offset": 18739422,
+            "size": 1157643
+        },
+        "0.1.0": {
+            "offset": 19897065,
+            "size": 1115469
+        },
+        "0.1.1": {
+            "offset": 21012534,
+            "size": 1126406
+        }
+    },
+    "quality_level/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -128
+    },
+    "quality_level/.zattrs": {
+        "long_name": "quality level of SST pixel",
+        "_FillValue": -128,
+        "valid_min": 0,
+        "valid_max": 5,
+        "comment": "thermal IR SST proximity confidence value; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered > 127, please subtract 256 from this reported value",
+        "flag_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "flag_meanings": "no_data bad_data worst_quality low_quality acceptable_quality best_quality",
+        "coverage_content_type": "qualityInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "quality_level/.zchunkstore": {
+        "0.0.0": {
+            "offset": 22162994,
+            "size": 24444
+        },
+        "0.0.1": {
+            "offset": 22187438,
+            "size": 30682
+        },
+        "0.1.0": {
+            "offset": 22218120,
+            "size": 13679
+        },
+        "0.1.1": {
+            "offset": 22231799,
+            "size": 4661
+        }
+    },
+    "dt_analysis/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -128
+    },
+    "dt_analysis/.zattrs": {
+        "long_name": "deviation from SST reference climatology",
+        "units": "kelvin",
+        "_FillValue": -128,
+        "valid_min": -127,
+        "valid_max": 127,
+        "comment": "TBD",
+        "scale_factor": 0.1000000015,
+        "add_offset": 0.0,
+        "source": "TBD. Placeholder.  Currently empty",
+        "coverage_content_type": "auxiliaryInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "dt_analysis/.zchunkstore": {
+        "0.0.0": {
+            "offset": 27367954,
+            "size": 689
+        },
+        "0.0.1": {
+            "offset": 27368643,
+            "size": 689
+        },
+        "0.1.0": {
+            "offset": 27369332,
+            "size": 689
+        },
+        "0.1.1": {
+            "offset": 27370021,
+            "size": 689
+        }
+    },
+    "sses_standard_deviation_4um/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -128
+    },
+    "sses_standard_deviation_4um/.zattrs": {
+        "long_name": "SSES standard deviation error based on proximity confidence flags",
+        "units": "kelvin",
+        "_FillValue": -128,
+        "valid_min": -127,
+        "valid_max": 127,
+        "comment": "mid-IR SST standard deviation error; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered > 127, please subtract 256 from this reported value",
+        "scale_factor": 0.07874015719,
+        "add_offset": 10.0,
+        "coverage_content_type": "auxiliaryInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "sses_standard_deviation_4um/.zchunkstore": {
+        "0.0.0": {
+            "offset": 27251747,
+            "size": 30619
+        },
+        "0.0.1": {
+            "offset": 27282366,
+            "size": 39107
+        },
+        "0.1.0": {
+            "offset": 27321473,
+            "size": 18171
+        },
+        "0.1.1": {
+            "offset": 27339644,
+            "size": 6275
+        }
+    },
+    "sses_bias_4um/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -128
+    },
+    "sses_bias_4um/.zattrs": {
+        "long_name": "SSES bias error based on proximity confidence flags",
+        "units": "kelvin",
+        "_FillValue": -128,
+        "valid_min": -127,
+        "valid_max": 127,
+        "comment": "mid-IR SST bias error; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered > 127, please subtract 256 from this reported value",
+        "scale_factor": 0.1574803144,
+        "add_offset": 0.0,
+        "coverage_content_type": "auxiliaryInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "sses_bias_4um/.zchunkstore": {
+        "0.0.0": {
+            "offset": 27160872,
+            "size": 27847
+        },
+        "0.0.1": {
+            "offset": 27188719,
+            "size": 35589
+        },
+        "0.1.0": {
+            "offset": 27224308,
+            "size": 14687
+        },
+        "0.1.1": {
+            "offset": 27238995,
+            "size": 5623
+        }
+    },
+    "sses_bias/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -128
+    },
+    "sses_bias/.zattrs": {
+        "long_name": "SSES bias error based on proximity confidence flags",
+        "units": "kelvin",
+        "_FillValue": -128,
+        "valid_min": -127,
+        "valid_max": 127,
+        "comment": "thermal IR SST bias error; signed byte array: WARNING Some applications are unable to properly handle signed byte values. If values are encountered > 127, please subtract 256 from this reported value",
+        "scale_factor": 0.1574803144,
+        "add_offset": 0.0,
+        "coverage_content_type": "auxiliaryInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "sses_bias/.zchunkstore": {
+        "0.0.0": {
+            "offset": 22244733,
+            "size": 22729
+        },
+        "0.0.1": {
+            "offset": 22267462,
+            "size": 26981
+        },
+        "0.1.0": {
+            "offset": 22294443,
+            "size": 12149
+        },
+        "0.1.1": {
+            "offset": 22306592,
+            "size": 4272
+        }
+    },
+    "sea_surface_temperature_4um/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -32767
+    },
+    "sea_surface_temperature_4um/.zattrs": {
+        "long_name": "sea surface temperature",
+        "units": "kelvin",
+        "_FillValue": -32767,
+        "valid_min": -1000,
+        "valid_max": 10000,
+        "comment": "sea surface temperature from mid-IR (4 um) channels; non L2P core field",
+        "scale_factor": 0.004999999888,
+        "add_offset": 273.1499939,
+        "coverage_content_type": "physicalMeasurement",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "sea_surface_temperature_4um/.zchunkstore": {
+        "0.0.0": {
+            "offset": 22405618,
+            "size": 1197232
+        },
+        "0.0.1": {
+            "offset": 23602850,
+            "size": 1171640
+        },
+        "0.1.0": {
+            "offset": 24774490,
+            "size": 1141479
+        },
+        "0.1.1": {
+            "offset": 25915969,
+            "size": 1153202
+        }
+    },
+    "quality_level_4um/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i2",
+        "shape": [
+            1,
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1,
+            1015,
+            677
+        ],
+        "fill_value": -128
+    },
+    "quality_level_4um/.zattrs": {
+        "long_name": "quality level of SST pixel",
+        "_FillValue": -128,
+        "valid_min": 0,
+        "valid_max": 5,
+        "comment": "mid-IR SST proximity confidence value; non L2P core field; signed byte array:  WARNING Some applications are unable to properly handle signed byte values. If values are encountered > 127, please subtract 256 from this reported value",
+        "flag_values": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5
+        ],
+        "flag_meanings": "no_data bad_data worst_quality low_quality acceptable_quality best_quality",
+        "coverage_content_type": "qualityInformation",
+        "coordinates": "time lat lon",
+        "_ARRAY_DIMENSIONS": [
+            "time",
+            "nj",
+            "ni"
+        ]
+    },
+    "quality_level_4um/.zchunkstore": {
+        "0.0.0": {
+            "offset": 27076250,
+            "size": 25483
+        },
+        "0.0.1": {
+            "offset": 27101733,
+            "size": 33457
+        },
+        "0.1.0": {
+            "offset": 27135190,
+            "size": 13796
+        },
+        "0.1.1": {
+            "offset": 27148986,
+            "size": 5147
+        }
+    },
+    "time/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<i4",
+        "shape": [
+            1
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1
+        ],
+        "fill_value": null
+    },
+    "time/.zattrs": {
+        "long_name": "reference time of sst file",
+        "standard_name": "time",
+        "units": "seconds since 1981-01-01 00:00:00",
+        "comment": "time of first sensor observation",
+        "coverage_content_type": "coordinate",
+        "_ARRAY_DIMENSIONS": [
+            "time"
+        ]
+    },
+    "time/.zchunkstore": {
+        "0": {
+            "offset": 17528467,
+            "size": 12
+        }
+    },
+    "lat/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<f4",
+        "shape": [
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1015,
+            677
+        ],
+        "fill_value": -999.0
+    },
+    "lat/.zattrs": {
+        "long_name": "latitude",
+        "standard_name": "latitude",
+        "units": "degrees_north",
+        "_FillValue": -999.0,
+        "valid_min": -90.0,
+        "valid_max": 90.0,
+        "comment": "geographical coordinates, WGS84 projection",
+        "coverage_content_type": "coordinate",
+        "_ARRAY_DIMENSIONS": [
+            "nj",
+            "ni"
+        ]
+    },
+    "lat/.zchunkstore": {
+        "0.0": {
+            "offset": 19762,
+            "size": 2073756
+        },
+        "0.1": {
+            "offset": 2093518,
+            "size": 1940803
+        },
+        "1.0": {
+            "offset": 4034321,
+            "size": 2080328
+        },
+        "1.1": {
+            "offset": 6114649,
+            "size": 1911892
+        }
+    },
+    "lon/.zarray": {
+        "zarr_format": 2,
+        "filters": null,
+        "order": "C",
+        "dtype": "<f4",
+        "shape": [
+            2030,
+            1354
+        ],
+        "compressor": {
+            "id": "zlib",
+            "level": 4
+        },
+        "chunks": [
+            1015,
+            677
+        ],
+        "fill_value": -999.0
+    },
+    "lon/.zattrs": {
+        "long_name": "longitude",
+        "standard_name": "longitude",
+        "units": "degrees_east",
+        "_FillValue": -999.0,
+        "valid_min": -180.0,
+        "valid_max": 180.0,
+        "comment": "geographical coordinates, WGS84 projection",
+        "coverage_content_type": "coordinate",
+        "_ARRAY_DIMENSIONS": [
+            "nj",
+            "ni"
+        ]
+    },
+    "lon/.zchunkstore": {
+        "0.0": {
+            "offset": 8032699,
+            "size": 2408756
+        },
+        "0.1": {
+            "offset": 10441455,
+            "size": 2316773
+        },
+        "1.0": {
+            "offset": 12758228,
+            "size": 2460793
+        },
+        "1.1": {
+            "offset": 15219021,
+            "size": 2306544
+        }
+    },
+    ".zattrs": {
+        "Conventions": "CF-1.7, ACDD-1.3",
+        "title": "MODIS Aqua L2P SST",
+        "summary": "Sea surface temperature retrievals produced at the NASA OBPG for the MODIS Aqua sensor.  These have been reformatted to GHRSST GDS specifications by the JPL PO.DAAC",
+        "references": "GHRSST Data Processing Specification v2r5",
+        "institution": "NASA/JPL/OBPG/RSMAS",
+        "history": "MODIS L2P created at JPL PO.DAAC",
+        "comment": "L2P Core without DT analysis or other ancillary fields; Night, Start Node:Descending, End Node:Descending; WARNING Some applications are unable to properly handle signed byte values. If values are encountered > 127, please subtract 256 from this reported value; Quicklook",
+        "license": "GHRSST and PO.DAAC protocol allow data use as free and open.",
+        "id": "MODIS_A-JPL-L2P-v2019.0",
+        "naming_authority": "org.ghrsst",
+        "product_version": "2019.0",
+        "uuid": "f6e1f61d-c4a4-4c17-8354-0c15e12d688b",
+        "gds_version_id": "2.0",
+        "netcdf_version_id": "4.1",
+        "date_created": "20200911T024514Z",
+        "file_quality_level": 3,
+        "spatial_resolution": "1km",
+        "start_time": "20200911T000001Z",
+        "time_coverage_start": "20200911T000001Z",
+        "stop_time": "20200911T000458Z",
+        "time_coverage_end": "20200911T000458Z",
+        "northernmost_latitude": -36.22299957,
+        "southernmost_latitude": -57.91799927,
+        "easternmost_longitude": 31.05480003,
+        "westernmost_longitude": -7.165909767,
+        "source": "MODIS sea surface temperature observations for the OBPG",
+        "platform": "Aqua",
+        "sensor": "MODIS",
+        "metadata_link": "http://podaac.jpl.nasa.gov/ws/metadata/dataset/?format=iso&shortName=MODIS_A-JPL-L2P-v2019.0",
+        "keywords": "Oceans > Ocean Temperature > Sea Surface Temperature",
+        "keywords_vocabulary": "NASA Global Change Master Directory (GCMD) Science Keywords",
+        "standard_name_vocabulary": "NetCDF Climate and Forecast (CF) Metadata Convention",
+        "geospatial_lat_units": "degrees_north",
+        "geospatial_lat_resolution": 0.009999999776,
+        "geospatial_lon_units": "degrees_east",
+        "geospatial_lon_resolution": 0.009999999776,
+        "acknowledgment": "The MODIS L2P sea surface temperature data are sponsored by NASA",
+        "creator_name": "Ed Armstrong, JPL PO.DAAC",
+        "creator_email": "edward.m.armstrong@jpl.nasa.gov",
+        "creator_url": "http://podaac.jpl.nasa.gov",
+        "project": "Group for High Resolution Sea Surface Temperature",
+        "publisher_name": "The GHRSST Project Office",
+        "publisher_url": "http://www.ghrsst.org",
+        "publisher_email": "ghrsst-po@nceo.ac.uk",
+        "processing_level": "L2P",
+        "cdm_data_type": "swath",
+        "startDirection": "Descending",
+        "endDirection": "Descending",
+        "day_night_flag": "Night"
+    }
+}
