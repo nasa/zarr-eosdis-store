@@ -15,15 +15,11 @@ This module requires Python 3.8 or greater::
 
 Install from PyPI::
 
-    $ pip install --extra-index-url https://maven.earthdata.nasa.gov/repository/python-repo/simple/ zarr-eosdis-store
-
-.. After release: pip install zarr-eosdis-store
+    $ pip install zarr-eosdis-store
 
 To install the latest development version::
 
-    $ pip install git+https://git.earthdata.nasa.gov/harmony/eosdis-zarr-store.git
-
-.. After release: $ pip install git+https://github.com/nasa/zarr-eosdis-store.git
+    $ pip install pip install git+https://github.com/nasa/zarr-eosdis-store.git@main#egg=zarr-eosdis-store
 
 Earthdata Login
 ===============
