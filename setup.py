@@ -32,10 +32,10 @@ setup(
     description="Zarr Store class for working with EOSDIS cloud data",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://git.earthdata.nasa.gov/projects/harmony/repos/eosdis-zarr-store",
+    url="https://github.com/nasa/zarr-eosdis-store",
     packages=find_packages(exclude=['docs', 'tests*']),
     classifiers=[
-        "Private :: Do Not Upload", # Pending open source approval: "License :: OSI Approved :: Apache 2.0 License",
+        "License :: OSI Approved :: Apache 2.0 License",
         "Operating System :: OS Independent",
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
