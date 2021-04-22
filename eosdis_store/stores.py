@@ -8,6 +8,7 @@ from requests_futures.sessions import FuturesSession
 import xml.etree.ElementTree as ElementTree
 
 from .dmrpp import to_zarr
+from .version import __version__
 from zarr.storage import ConsolidatedMetadataStore
 
 logger = logging.getLogger(__name__)
@@ -99,7 +100,10 @@ class HttpByteRangeReader():
         """
         logger.debug(f"Reading {self.url} [{offset}:{offset+size}] ({size} bytes)")
         range_str = '%d-%d' % (offset, offset + size)
-        request = self.session.get(self.url, headers={ 'Range': 'bytes=' + range_str })
+        request = self.session.get(self.url, headers={
+            'Range': 'bytes=' + range_str,
+            'User-Agent': f'zarr-eosdis-store/{__version__}'
+        })
         if self.first_fetch:
             self.first_fetch = False
             request.result()
@@ -132,9 +136,9 @@ class ConsolidatedChunkStore(ConsolidatedMetadataStore):
         Returns:
             The data or metadata value of the item
         """
-        return next(self.getitems((key, )))[1]
+        return self.getitems((key, ))[key]
 
-    def getitems(self, keys):
+    def getitems(self, keys, **kwargs):
         """Get values for the provided list of keys from the Zarr store
 
         Args:
@@ -142,6 +146,11 @@ class ConsolidatedChunkStore(ConsolidatedMetadataStore):
 
         Returns:
             An iterator returning tuples of the input keys to their data or metadata values
+        """
+        return dict(self._getitems_generator(keys, **kwargs))
+
+    def _getitems_generator(self, keys, **kwargs):
+        """Generate results for getitems
         """
         ranges = []
         for key in keys:

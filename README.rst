@@ -120,10 +120,8 @@ To allow the technique to work with EOSDIS data, we have extended it and optimiz
 * The store caches redirect URLs for a period of time set by the Cache-Control header.  Doing this avoids the overhead
   of repeated redirects when accessing parts of files.
 
-* In addition to backward-compatible APIs, the store exposes a proposed API that allows it to make more efficient access
-  decisions. The ticket describing the API is available here: `<https://github.com/zarr-developers/zarr-python/issues/536>`_.
-  The store works without this implementation but is significantly faster with it, making the following optimizations:
-
+* The store uses a parallel API that allows it to make more efficient access optimizations:
+*
   * When the Zarr library accesses data that requires reading multiple near-sequential bytes in the file, the store combines
     these smaller requests into a single larger request.
 
