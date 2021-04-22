@@ -35,12 +35,13 @@ setup(
     url="https://github.com/nasa/zarr-eosdis-store",
     packages=find_packages(exclude=['docs', 'tests*']),
     classifiers=[
-        "License :: OSI Approved :: Apache 2.0 License",
-        "Operating System :: OS Independent",
+        'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
-        'License :: OSI Approved :: MIT License',
-        "Programming Language :: Python :: 3",   # remove once all tested sub-versions are listed
-        'Programming Language :: Python :: 3.8'
+        'Intended Audience :: Science/Research',
+        'License :: OSI Approved :: Apache Software License',
+        'Programming Language :: Python :: 3',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3 :: Only',
     ],
     python_requires='>=3.8',
     install_requires=install_requires,
