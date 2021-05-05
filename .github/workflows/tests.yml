@@ -18,6 +18,12 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
 
+    - uses: extractions/netrc@v1
+      with:
+        machine: uat.urs.earthdata.nasa.gov
+        username: ${{ secrets.EDL_USER }}
+        password: ${{ secrets.EDL_PASSWORD }}
+
     - name: Install dependencies
       run: |
         make install
