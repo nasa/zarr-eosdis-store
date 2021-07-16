@@ -17,7 +17,10 @@ class Test(unittest.TestCase):
         'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/f16_ssmis_20051022v7.nc.dmrpp',
         'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S000000-E002959.0000.V06B.HDF5.dmrpp',
         # MODIS data
-        'https://archive.podaac.uat.earthdata.nasa.gov/podaac-uat-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20200911000001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc.dmrpp'
+        'https://archive.podaac.uat.earthdata.nasa.gov/podaac-uat-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20200911000001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc.dmrpp',
+
+        # MUR granule with deflate shuffle filter
+        'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc.dmrpp',
         # 'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S233000-E235959.1410.V06B.HDF5.dmrpp',
     ]
 
