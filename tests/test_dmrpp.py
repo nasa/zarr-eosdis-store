@@ -18,9 +18,6 @@ class Test(unittest.TestCase):
         'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S000000-E002959.0000.V06B.HDF5.dmrpp',
         # MODIS data
         'https://archive.podaac.uat.earthdata.nasa.gov/podaac-uat-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20200911000001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc.dmrpp',
-
-        # MUR granule with deflate shuffle filter
-        'https://archive.podaac.earthdata.nasa.gov/podaac-ops-cumulus-protected/MUR-JPL-L4-GLOB-v4.1/20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc.dmrpp',
         # 'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S233000-E235959.1410.V06B.HDF5.dmrpp',
     ]
 
@@ -118,3 +115,22 @@ class Test(unittest.TestCase):
             json1 = json.dumps(fixture, sort_keys=True)
             json2 = json.dumps(zarr, sort_keys=True)
             assert(json1 == json2)
+
+    def test_deflate_shuffle(self):
+        filename = '20210715090000-JPL-L4_GHRSST-SSTfnd-MUR-GLOB-v02.0-fv04.1.nc.dmrpp'
+        with open(os.path.join(testpath, 'fixtures', filename)) as f:
+            dmrpp = f.read()
+        tree = ElementTree.fromstring(dmrpp)
+        zarr = dmr.to_zarr(tree)
+        attributes = zarr['analysed_sst/.zarray']
+        expected = {
+            'zarr_format': 2,
+            'filters': [{'id': 'shuffle', 'elementsize': 2}],
+            'order': 'C',
+            'dtype': '<i2',
+            'shape': [1, 17999, 36000],
+            'compressor': {'id': 'zlib', 'level': 4},
+            'chunks': [1, 1023, 2047],
+            'fill_value': -32768,
+        }
+        assert(attributes == expected)
