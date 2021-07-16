@@ -200,6 +200,10 @@ def array_to_zarr(node, dims, prefix=''):
             compression = child.attrib.get('compressionType')
             if compression == 'deflate':
                 zarray['compressor'] = { "id": "zlib", "level": UNKNOWN_COMPRESSION_LEVEL }
+            elif compression == 'deflate shuffle':
+                zarray['compressor'] = {"id": "zlib", "level": UNKNOWN_COMPRESSION_LEVEL}
+                size = int(dtype[2:])
+                zarray['filters'] = [{"id": "shuffle", "elementsize": size}]
             elif compression is None:
                 zarray['compressor'] = None
             else:
@@ -210,8 +214,15 @@ def array_to_zarr(node, dims, prefix=''):
     # NOTE - this is null in test file
     zarray['fill_value'] = zattrs.get('_FillValue')
 
-    #if node.attrib['name'] == 'time':
-    #    set_trace()
+    # HARMONY-896: Automatic scale factor and offset filter.  Not yet working with all data types
+    # if zattrs.get('scale_factor') or zattrs.get('add_offset'):
+    #     zarray['filters'].append({
+    #         'id': 'fixedscaleoffset',
+    #         'offset': zattrs.get('add_offset', 0.0),
+    #         'scale': zattrs.get('scale_factor', 1.0),
+    #         'dtype': '<f8',
+    #     })
+
     if zarray.get('chunks') is None:
         zarray['chunks'] = zarray['shape']
 
