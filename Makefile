@@ -45,7 +45,7 @@ ci: test
 	coverage html
 
 build: clean
-	sed -i.bak "s/__version__ .*/__version__ = \"$(VERSION)\"/" eosdis_store/VERSION.py && rm eosdis_store/version.py.bak
+	sed -i.bak "s/__version__ .*/__version__ = \"$(VERSION)\"/" eosdis_store/version.py && rm eosdis_store/version.py.bak
 	python -m pip install --upgrade --quiet setuptools wheel twine
 	python setup.py --quiet sdist bdist_wheel
 
