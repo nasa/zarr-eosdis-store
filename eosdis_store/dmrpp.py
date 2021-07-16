@@ -214,7 +214,7 @@ def array_to_zarr(node, dims, prefix=''):
     # NOTE - this is null in test file
     zarray['fill_value'] = zattrs.get('_FillValue')
 
-    # Automatic scale factor and offset filter.  Not yet reliable
+    # HARMONY-896: Automatic scale factor and offset filter.  Not yet working with all data types
     # if zattrs.get('scale_factor') or zattrs.get('add_offset'):
     #     zarray['filters'].append({
     #         'id': 'fixedscaleoffset',
