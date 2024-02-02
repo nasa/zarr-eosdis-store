@@ -3,5 +3,5 @@ requests>=2.23.0
 requests-futures>=1.0.0
 zarr>=2.7.1
 ipypb~=0.5
-xarray~=0.16
+xarray>=0.16
 numcodecs>=0.8.1
