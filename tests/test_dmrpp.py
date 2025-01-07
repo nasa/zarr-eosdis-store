@@ -1,24 +1,24 @@
 import json
 import os
 import unittest
+from  xml.etree import ElementTree
 
 import requests
-import xml.etree.ElementTree as ElementTree
 
 import eosdis_store.dmrpp as dmr
 
 
 testpath = os.path.dirname(__file__)
 
+s3_folder = 'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-eedtest-data/zarr-store'
 
 class Test(unittest.TestCase):
 
     test_files = [
-        'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/f16_ssmis_20051022v7.nc.dmrpp',
-        'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S000000-E002959.0000.V06B.HDF5.dmrpp',
+        f'{s3_folder}/f16_ssmis_20051022v7.nc.dmrpp',
+        f'{s3_folder}/3B-HHR.MS.MRG.3IMERG.20051022-S000000-E002959.0000.V06B.HDF5.dmrpp',
         # MODIS data
         'https://archive.podaac.uat.earthdata.nasa.gov/podaac-uat-cumulus-protected/MODIS_A-JPL-L2P-v2019.0/20200911000001-JPL-L2P_GHRSST-SSTskin-MODIS_A-N-v02.0-fv01.0.nc.dmrpp',
-        # 'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S233000-E235959.1410.V06B.HDF5.dmrpp',
     ]
 
     @classmethod

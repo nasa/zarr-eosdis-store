@@ -1,10 +1,10 @@
 import json
 import os
 import unittest
+from xml.etree import ElementTree
 
 import numpy as np
 import requests
-import xml.etree.ElementTree as ElementTree
 import xarray
 import zarr
 
@@ -12,13 +12,15 @@ from eosdis_store import EosdisStore, ConsolidatedChunkStore
 
 testpath = os.path.dirname(__file__)
 
+s3_folder = 'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-eedtest-data/zarr-store'
+
 fixtures = [
     {
-        "url": 'https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/f16_ssmis_20051022v7.nc',
+        "url": f"{s3_folder}/f16_ssmis_20051022v7.nc",
         "aoi": (0, slice(400, 549, None), slice(1040, 1261, None))
     },
     {
-        "url": "https://harmony.uat.earthdata.nasa.gov/service-results/harmony-uat-staging/public/demo/zarr-store/3B-HHR.MS.MRG.3IMERG.20051022-S000000-E002959.0000.V06B.HDF5",
+        "url": f"{s3_folder}/3B-HHR.MS.MRG.3IMERG.20051022-S000000-E002959.0000.V06B.HDF5",
         "aoi": (0, slice(800, 1351, None), slice(1000, 1371, None))
     },
     {
@@ -61,7 +63,7 @@ class TestZarr(unittest.TestCase):
         assert(arrays[0][0] == 'atmosphere_cloud_liquid_water_content')
         arr = arrays[0][1]
         assert(type(arr) == zarr.core.Array)
-        assert(arr.name == '/atmosphere_cloud_liquid_water_content')       
+        assert(arr.name == '/atmosphere_cloud_liquid_water_content')
         assert(arr.shape == (2, 720, 1440))
 
     def test_eosdis_store_read(self):
@@ -137,7 +139,7 @@ class TestXArray(unittest.TestCase):
         assert(not hasattr(wv, "scale_factor"))
         assert(not hasattr(wv, "add_offset"))
         arr = wv[fixtures[0]["aoi"]]
-        
+
         self.assertAlmostEqual(arr.mean().item(), mean * scale_factor + add_offset, places=5)
 
     def test_fillvalue(self):
@@ -166,5 +168,3 @@ class TestXArray(unittest.TestCase):
         mean2 = np.nanmean(arr2)
 
         self.assertAlmostEqual(mean, mean2, places=4)
-
-        
