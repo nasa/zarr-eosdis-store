@@ -1856,7 +1856,7 @@
             <Value>Interim-MUR(nrt) will be replaced by MUR-Final in about 3 days; MUR = \&quot;Multi-scale Ultra-high Resolution\&quot;</Value>
         </Attribute>
         <Attribute name="license" type="String">
-            <Value>These data are available free of charge under data policy of JPL PO.DAAC.</Value>
+            <Value>These data are available free of charge under data guidance of JPL PO.DAAC.</Value>
         </Attribute>
         <Attribute name="id" type="String">
             <Value>MUR-JPL-L4-GLOB-v04.1</Value>
