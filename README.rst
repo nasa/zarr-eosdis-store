@@ -1,3 +1,13 @@
+.. warning::
+
+   **DEPRECATED**: This repository is no longer maintained.
+   Please use `VirtualiZarr <https://github.com/zarr-developers/VirtualiZarr>`_ instead.
+
+----
+
+.. image:: https://img.shields.io/badge/maintenance-no--longer--maintained-red
+   :alt: No Longer Maintained
+
 zarr-eosdis-store
 =================
 
