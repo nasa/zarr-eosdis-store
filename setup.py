@@ -35,7 +35,7 @@ setup(
     url="https://github.com/nasa/zarr-eosdis-store",
     packages=find_packages(exclude=['docs', 'tests*']),
     classifiers=[
-        'Development Status :: 3 - Alpha',
+        'Development Status :: 7 - Inactive',
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: Apache Software License',
